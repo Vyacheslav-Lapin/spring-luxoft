@@ -53,12 +53,13 @@ final class LoggableAspect {
   }
 
   private BiConsumer<String, Object[]> getLogMethod(ProceedingJoinPoint pjp) {
-    return switch (pjp.getAnnotation(Loggable.class).value()) {
-      case INFO -> log::info;
-      case DEBUG -> log::debug;
-      case WARN -> log::warn;
-      case ERROR -> log::error;
-      case TRACE -> log::trace;
-    };
+    switch (pjp.getAnnotation(Loggable.class).value()) {
+      case INFO: return log::info;
+      case DEBUG: return log::debug;
+      case WARN: return log::warn;
+      case ERROR: return log::error;
+      case TRACE: return log::trace;
+      default: throw new IllegalArgumentException();
+    }
   }
 }

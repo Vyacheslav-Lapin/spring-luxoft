@@ -14,9 +14,5 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationPropertiesScan("ru.vlapin.trainings.springluxoft")
 public class PropertyPlaceholder {
 
-  @Bean
-  @ConfigurationProperties("my-properties2")
-  JavaConfigBasedSetterPropertiesPlaceholderExample mySetterProperties2() {
-    return new JavaConfigBasedSetterPropertiesPlaceholderExampleImpl();
-  }
+
 }

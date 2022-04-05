@@ -1,7 +1,6 @@
 package ru.vlapin.trainings.springluxoft;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -15,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class DirectMovieListerImplTest {
 
   DirectMovieLister directMovieLister;
-  Movie movie;
+  Movie movie1;
 
   @Test
   @SneakyThrows
@@ -23,6 +22,6 @@ class DirectMovieListerImplTest {
   void directMovieFinderWorksCorrectlyTest() {
     assertThat(directMovieLister.moviesDirectedBy("Lorem ipsum dolor sit amet")).isNotNull()
         .hasSize(1)
-        .contains(movie);
+        .contains(movie1);
   }
 }

@@ -7,7 +7,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
 
-public sealed interface AnnotationBasedSetterPropertiesPlaceholderExample {
+public interface AnnotationBasedSetterPropertiesPlaceholderExample {
   String getHost();
   Integer getPort();
 }

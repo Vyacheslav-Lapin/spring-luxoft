@@ -18,7 +18,8 @@ public class AspectUtils {
 
   @SneakyThrows
   public Optional<Method> getMethod(JoinPoint jp) {
-    if (jp.getSignature() instanceof MethodSignature signature) {
+    if (jp.getSignature() instanceof MethodSignature) {
+      val signature = (MethodSignature) jp.getSignature();
       val method = signature.getMethod();
       return Optional.of(method.getDeclaringClass().isInterface() ?
                               jp.getTarget().getClass().getDeclaredMethod(signature.getName(), method.getParameterTypes()) : method);
@@ -31,13 +32,13 @@ public class AspectUtils {
         .flatMap(method -> Optional.ofNullable(
             Optional.ofNullable(method.getAnnotation(annotationClass))
                 .orElseGet(() -> method.getDeclaringClass().getAnnotation(annotationClass))))
-        .orElseThrow();
+        .orElseThrow(RuntimeException::new);
   }
 
   public <A extends Annotation> Tuple2<A, Method> getAnnotationAndMethod(JoinPoint jp, Class<A> annotationClass) {
     return getMethod(jp)
         .map(method -> Tuple.of(method.getAnnotation(annotationClass), method))
-        .orElseThrow();
+        .orElseThrow(RuntimeException::new);
   }
 
   public <A extends Annotation, R> R destruct(JoinPoint jp,
@@ -48,11 +49,11 @@ public class AspectUtils {
   }
 
   public <R> R destruct(JoinPoint jp, CheckedFunction1<Method, R> method) {
-    return method.unchecked().apply(getMethod(jp).orElseThrow());
+    return method.unchecked().apply(getMethod(jp).orElseThrow(RuntimeException::new));
   }
 
   public <A extends Annotation> A getAnnotation(Method method, Class<A> aClass) {
     return Optional.ofNullable(method.getAnnotation(aClass))
-        .orElseThrow();
+        .orElseThrow(RuntimeException::new);
   }
 }

@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "movie.director",
+      "type": "java.lang.String",
+      "description": "Description for movie.director."
+  }
+] }

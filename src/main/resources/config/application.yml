@@ -2,3 +2,5 @@ mail.credentials:
   authMethod: basic
   username: user
   password: qwerty
+
+movie.director: Lorem ipsum dolor sit amet3
