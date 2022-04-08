@@ -1,13 +1,9 @@
 package ru.vlapin.trainings.springluxoft.common;
 
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.TYPE;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-import static ru.vlapin.trainings.springluxoft.common.Loggable.LogLevel.*;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 import java.util.function.BiConsumer;
+
 import lombok.SneakyThrows;
 import lombok.experimental.ExtensionMethod;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +11,11 @@ import lombok.val;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.jetbrains.annotations.NotNull;
+
+import static java.lang.annotation.ElementType.*;
+import static java.lang.annotation.RetentionPolicy.*;
+import static ru.vlapin.trainings.springluxoft.common.Loggable.LogLevel.*;
 
 /**
  * Aspect annotation.
@@ -52,7 +53,7 @@ final class LoggableAspect {
     return result;
   }
 
-  private BiConsumer<String, Object[]> getLogMethod(ProceedingJoinPoint pjp) {
+  private @NotNull BiConsumer<String, Object[]> getLogMethod(@NotNull ProceedingJoinPoint pjp) {
     switch (pjp.getAnnotation(Loggable.class).value()) {
       case INFO: return log::info;
       case DEBUG: return log::debug;

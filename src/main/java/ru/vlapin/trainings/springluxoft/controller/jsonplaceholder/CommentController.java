@@ -1,15 +1,17 @@
 package ru.vlapin.trainings.springluxoft.controller.jsonplaceholder;
 
 import java.util.List;
+
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import ru.vlapin.trainings.springluxoft.model.jsonplaceholder.Comment;
+import ru.vlapin.trainings.springluxoft.service.jsonplaceholder.CommentService;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.vlapin.trainings.springluxoft.model.jsonplaceholder.Comment;
-import ru.vlapin.trainings.springluxoft.service.jsonplaceholder.CommentService;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,7 +28,7 @@ public class CommentController {
   }
 
   @NotNull
-  @GetMapping("{id}")
+  @GetMapping(path = "{id}", produces = "application/json")
   @Contract(pure = true)
   public Comment comment(@PathVariable @NotNull Long id) {
     return commentService.findById(id);

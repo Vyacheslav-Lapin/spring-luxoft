@@ -28,7 +28,7 @@ class PropertiesPlaceholderExamplesTest {
         .extracting(
             AnnotationBasedSetterPropertiesPlaceholderExample::getHost,
             AnnotationBasedSetterPropertiesPlaceholderExample::getPort)
-        .contains("localhost", 8090);
+        .contains("localhost", 8091);
   }
 
   @Test
@@ -39,7 +39,7 @@ class PropertiesPlaceholderExamplesTest {
         .extracting(
             JavaConfigBasedSetterPropertiesPlaceholderExample::getHost,
             JavaConfigBasedSetterPropertiesPlaceholderExample::getPort)
-        .contains("my.site.com", 8080);
+        .contains("my.site.org", 8080);
   }
 
   @Test

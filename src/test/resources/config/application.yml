@@ -1,5 +1,5 @@
-my-properties.port: 8090
-my-properties2.host: my.site.com
+my-properties.port: 8091
+my-properties2.host: my.site.org
 mail.credentials:
   authMethod: basic
   username: user

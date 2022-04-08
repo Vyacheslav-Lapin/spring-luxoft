@@ -4,3 +4,10 @@ mail.credentials:
   password: qwerty
 
 movie.director: Lorem ipsum dolor sit amet3
+
+#my-properties:
+#  port: 9070
+
+server:
+  port: 8095
+

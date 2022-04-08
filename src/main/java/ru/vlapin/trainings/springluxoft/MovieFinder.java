@@ -3,13 +3,12 @@ package ru.vlapin.trainings.springluxoft;
 import java.util.Collection;
 import java.util.Collections;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 public interface MovieFinder {
   Collection<Movie> findAll();
 }
 
-@Component
+//@Component
 @RequiredArgsConstructor
 final class MovieFinderImpl implements MovieFinder {
 

@@ -1,16 +1,13 @@
 package ru.vlapin.trainings.springluxoft.jsonplaceholder;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import lombok.val;
-import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.vlapin.trainings.springluxoft.model.jsonplaceholder.Post;
 import ru.vlapin.trainings.springluxoft.service.jsonplaceholder.PostService;
 
 @SpringBootTest
@@ -35,10 +32,10 @@ class PostControllerTest {
   void getOnePostMethodWorksCorrectlyTest() {
     assertThat(postService.findById(id)).isNotNull()
         .matches(post -> post.getId() == id, "id is equals")
-        .matches(post -> post.getBody().equals("""
-            at pariatur consequuntur earum quidem
-            quo est laudantium soluta voluptatem
-            qui ullam et est
-            et cum voluptas voluptatum repellat est"""), "body is equals");
+        .matches(post -> post.getBody().equals(
+            "at pariatur consequuntur earum quidem\n" +
+            "quo est laudantium soluta voluptatem\n" +
+            "qui ullam et est\n" +
+            "et cum voluptas voluptatum repellat est"), "body is equals");
   }
 }
